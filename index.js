@@ -7,6 +7,10 @@ const server = Hapi.server({
   host: 'localhost'
 });
 
+server.bind({
+  donations: [],
+});
+
 async function init() {
   await server.register(require('inert'));
   await server.register(require('vision'));

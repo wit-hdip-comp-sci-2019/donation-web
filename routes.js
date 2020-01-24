@@ -13,6 +13,7 @@ module.exports = [
 
   { method: 'GET', path: '/home', config: Donations.home },
   { method: 'GET', path: '/report', config: Donations.report },
+  { method: 'POST', path: '/donate', config: Donations.donate },
   {
     method: 'GET',
     path: '/{param*}',
