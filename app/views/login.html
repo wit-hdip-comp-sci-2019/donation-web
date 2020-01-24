@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Donations</title>
+    <title>Login to Donations</title>
     <meta charset="UTF-8"/>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
@@ -15,13 +15,19 @@
           <a class="item" href="/signup"> Signup</a> <a class="item" href="/login"> Login</a>
         </div>
       </nav>
-      <section class="ui stacked segment">
+      <section class="ui raised segment">
         <div class="ui grid">
-          <aside class="six wide column"><img src="images/homer.png" class="ui medium image"/></aside>
-          <article class="ten wide column">
-            <header class="ui  header">Help Me Run Springfield</header>
-            <p>Donate what you can now - No Bitcoins accepted!</p>
-          </article>
+          <aside class="ui six wide column"><img src="images/homer2.png" class="ui medium image"/></aside>
+          <div class="ui ten wide column fluid form">
+            <div class="ui stacked segment">
+              <form action="/login" method="POST">
+                <h3 class="ui header">Log-in</h3>
+                <div class="field"><label>Email</label> <input placeholder="Email" type="text" name="email"/></div>
+                <div class="field"><label>Password</label> <input type="password" name="password"/></div>
+                <button class="ui blue submit button">Login</button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </section>
