@@ -1,0 +1,20 @@
+<nav class="ui inverted menu">
+  <header class="header item"><a href="/"> Donation </a></header>
+  <div class="right menu">
+    <a class="active item" href="/home"> Donate</a>
+    <a class="item" href="/report"> Report</a>
+    <a class="item" href="/logout"> Logout</a>
+  </div>
+</nav>
+
+<section class="ui raised segment">
+
+  {{> donate }}
+
+  <div class="ui  divider"></div>
+
+  <div class="ui teal progress" data-percent="${progress}" id="mainprogress">
+    <div class="bar"></div>
+  </div>
+
+</section>
