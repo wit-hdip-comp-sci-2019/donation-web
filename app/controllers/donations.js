@@ -16,7 +16,8 @@ const Donations = {
   },
   donate: {
     handler: function(request, h) {
-      const data = request.payload;
+      let data = request.payload;
+      data.donor = this.currentUser;
       this.donations.push(data);
       return h.redirect('/report');
     }
