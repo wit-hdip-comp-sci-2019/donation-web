@@ -9,10 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "handlebars": "^4.7.2",
-    "hapi": "^18.1.0",
-    "inert": "^5.1.3",
-    "vision": "^5.4.4"
+    "@hapi/cookie": "^11.0.0",
+    "@hapi/hapi": "^19.0.5",
+    "@hapi/inert": "^6.0.1",
+    "@hapi/vision": "^6.0.0",
+    "handlebars": "^4.7.2"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
