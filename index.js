@@ -8,10 +8,7 @@ const server = Hapi.server({
   host: 'localhost'
 });
 
-server.bind({
-  users: {},
-  donations: []
-});
+require('./app/models/db');
 
 async function init() {
   await server.register(require('@hapi/inert'));
