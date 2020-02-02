@@ -11,7 +11,7 @@ const Donations = {
   },
   report: {
     handler: async function(request, h) {
-      const donations = await Donation.find().lean();
+      const donations = await Donation.find().populate('donor').lean();
       return h.view('report', {
         title: 'Donations to Date',
         donations: donations
@@ -26,8 +26,7 @@ const Donations = {
       const newDonation = new Donation({
         amount: data.amount,
         method: data.method,
-        firstName: user.firstName,
-        lastName: user.lastName
+        donor: user._id
       });
       await newDonation.save();
       return h.redirect('/report');
