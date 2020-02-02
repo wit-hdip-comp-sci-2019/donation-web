@@ -6,8 +6,10 @@ const Schema = Mongoose.Schema;
 const donationSchema = new Schema({
   amount: Number,
   method: String,
-  firstName: String,
-  lastName: String
+  donor: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 });
 
 module.exports = Mongoose.model('Donation', donationSchema);
