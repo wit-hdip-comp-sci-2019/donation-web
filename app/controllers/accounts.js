@@ -28,6 +28,9 @@ const Accounts = {
           .required(),
         password: Joi.string().required()
       },
+      options: {
+        abortEarly: false
+      },
       failAction: function(request, h, error) {
         return h
           .view('signup', {
