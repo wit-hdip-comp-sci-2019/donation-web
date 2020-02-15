@@ -1,7 +1,13 @@
 'use strict';
 
 const Hapi = require('@hapi/hapi');
-require('dotenv').config();
+const dotenv = require('dotenv');
+
+const result = dotenv.config();
+if (result.error) {
+  console.log(result.error.message);
+  process.exit(1);
+}
 
 const server = Hapi.server({
   port: 3000,
@@ -14,6 +20,8 @@ async function init() {
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));
   await server.register(require('@hapi/cookie'));
+
+  server.validator(require('@hapi/joi'))
 
   server.auth.strategy('session', 'cookie', {
     cookie: {
