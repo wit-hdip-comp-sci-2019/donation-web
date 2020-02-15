@@ -21,6 +21,8 @@ async function init() {
   await server.register(require('@hapi/vision'));
   await server.register(require('@hapi/cookie'));
 
+  server.validator(require('@hapi/joi'))
+
   server.auth.strategy('session', 'cookie', {
     cookie: {
       name: process.env.cookie_name,
