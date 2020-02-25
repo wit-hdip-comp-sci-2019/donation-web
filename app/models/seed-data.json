@@ -6,12 +6,34 @@
       "lastName": "Simpson",
       "email": "homer@simpson.com",
       "password": "secret"
+    },
+    "marge": {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    "bart": {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
     }
   },
   "donations": {
     "_model": "Donation",
     "one": {
       "amount": 40,
+      "method": "paypal",
+      "donor": "->users.bart"
+    },
+    "two": {
+      "amount": 90,
+      "method": "direct",
+      "donor": "->users.marge"
+    },
+    "three": {
+      "amount": 430,
       "method": "paypal",
       "donor": "->users.homer"
     }
