@@ -1,52 +1,76 @@
 'use strict';
 
 const assert = require('chai').assert;
-const axios = require('axios');
+const DonationService = require('./donation-service');
+const fixtures = require('./fixtures.json');
+const _ = require('lodash');
 
 suite('Candidate API tests', function () {
 
-  test('get candidates', async function () {
-    const response = await axios.get('http://localhost:3000/api/candidates');
-    const candidates = response.data;
-    assert.equal(2, candidates.length);
+  let candidates = fixtures.candidates;
+  let newCandidate = fixtures.newCandidate;
 
-    assert.equal(candidates[0].firstName, 'Lisa');
-    assert.equal(candidates[0].lastName, 'Simpson');
-    assert.equal(candidates[0].office, 'President');
+  const donationService = new DonationService('http://localhost:3000');
 
-    assert.equal(candidates[1].firstName, 'Donald');
-    assert.equal(candidates[1].lastName, 'Simpson');
-    assert.equal(candidates[1].office, 'President');
+  setup(async function () {
+    await donationService.deleteAllCandidates();
   });
 
-  test('get one candidate', async function () {
-    let response = await axios.get('http://localhost:3000/api/candidates');
-    const candidates = response.data;
-    assert.equal(2, candidates.length);
-
-    const oneCandidateUrl = 'http://localhost:3000/api/candidates/' + candidates[0]._id;
-    response = await axios.get(oneCandidateUrl);
-    const oneCandidate = response.data;
-
-    assert.equal(oneCandidate.firstName, 'Lisa');
-    assert.equal(oneCandidate.lastName, 'Simpson');
-    assert.equal(oneCandidate.office, 'President');
+  teardown(async function () {
+    await donationService.deleteAllCandidates();
   });
 
   test('create a candidate', async function () {
-    const candidatesUrl = 'http://localhost:3000/api/candidates';
-    const newCandidate = {
-      firstName: 'Barnie',
-      lastName: 'Grumble',
-      office: 'President',
-    };
-
-    const response = await axios.post(candidatesUrl, newCandidate);
-    const returnedCandidate = response.data;
-    assert.equal(201, response.status);
-
-    assert.equal(returnedCandidate.firstName, 'Barnie');
-    assert.equal(returnedCandidate.lastName, 'Grumble');
-    assert.equal(returnedCandidate.office, 'President');
+    const returnedCandidate = await donationService.createCandidate(newCandidate);
+    assert(_.some([returnedCandidate], newCandidate), 'returnedCandidate must be a superset of newCandidate');
+    assert.isDefined(returnedCandidate._id);
   });
+
+  test('get candidate', async function () {
+    const c1 = await donationService.createCandidate(newCandidate);
+    const c2 = await donationService.getCandidate(c1._id);
+    assert.deepEqual(c1, c2);
+  });
+
+  test('get invalid candidate', async function () {
+    const c1 = await donationService.getCandidate('1234');
+    assert.isNull(c1);
+    const c2 = await donationService.getCandidate('012345678901234567890123');
+    assert.isNull(c2);
+  });
+
+
+  test('delete a candidate', async function () {
+    let c = await donationService.createCandidate(newCandidate);
+    assert(c._id != null);
+    await donationService.deleteOneCandidate(c._id);
+    c = await donationService.getCandidate(c._id);
+    assert(c == null);
+  });
+
+  test('get all candidates', async function () {
+    for (let c of candidates) {
+      await donationService.createCandidate(c);
+    }
+
+    const allCandidates = await donationService.getCandidates();
+    assert.equal(allCandidates.length, candidates.length);
+  });
+
+  test('get candidates detail', async function () {
+    for (let c of candidates) {
+      await donationService.createCandidate(c);
+    }
+
+    const allCandidates = await donationService.getCandidates();
+    for (var i = 0; i < candidates.length; i++) {
+      assert(_.some([allCandidates[i]], candidates[i]), 'returnedCandidate must be a superset of newCandidate');
+    }
+  });
+
+  test('get all candidates empty', async function () {
+    const allCandidates = await donationService.getCandidates();
+    assert.equal(allCandidates.length, 0);
+  });
+
 });
