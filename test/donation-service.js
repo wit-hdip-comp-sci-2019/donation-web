@@ -96,6 +96,33 @@ class DonationService {
       return null;
     }
   }
+
+  async makeDonation(id, donation) {
+    try {
+      const response = await axios.post(this.baseUrl + '/api/candidates/' + id + '/donations', donation);
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async getDonations(id) {
+    try {
+      const response = await axios.get(this.baseUrl + '/api/candidates/' + id + '/donations');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async deleteAllDonations() {
+    try {
+      const response = await axios.delete(this.baseUrl + '/api/donations');
+      return response.data;
+    } catch (e) {
+      return null;
+    }
+  }
 }
 
 module.exports = DonationService;
