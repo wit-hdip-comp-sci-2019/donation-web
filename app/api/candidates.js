@@ -39,7 +39,7 @@ const Candidates = {
   deleteAll: {
     auth: false,
     handler: async function(request, h) {
-      await Candidate.remove({});
+      await Candidate.deleteMany({});
       return { success: true };
     }
   },
