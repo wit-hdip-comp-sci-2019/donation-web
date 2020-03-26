@@ -1,4 +1,25 @@
 {
+  "donationService": "http://localhost:3000",
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret"
+    }
+  ],
   "candidates": [
     {
       "firstName": "Lisa",
@@ -11,10 +32,15 @@
       "office": "President"
     }
   ],
-  "newCandidate":
-  {
+  "newCandidate": {
     "firstName": "Barnie",
     "lastName": "Grumble",
     "office": "President"
+  },
+  "newUser": {
+    "firstName": "Maggie",
+    "lastName": "Simpson",
+    "email": "maggie@simpson.com",
+    "password": "secret"
   }
 }
