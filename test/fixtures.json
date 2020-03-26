@@ -42,5 +42,19 @@
     "lastName": "Simpson",
     "email": "maggie@simpson.com",
     "password": "secret"
-  }
+  },
+  "donations": [
+    {
+      "amount": 40,
+      "method": "paypal"
+    },
+    {
+      "amount": 90,
+      "method": "direct"
+    },
+    {
+      "amount": 430,
+      "method": "paypal"
+    }
+  ]
 }
