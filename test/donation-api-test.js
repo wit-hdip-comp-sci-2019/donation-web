@@ -8,8 +8,20 @@ const _ = require('lodash');
 suite('Donation API tests', function() {
   let donations = fixtures.donations;
   let newCandidate = fixtures.newCandidate;
+  let newUser = fixtures.newUser;
 
   const donationService = new DonationService(fixtures.donationService);
+
+  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });
 
   setup(async function() {
     donationService.deleteAllCandidates();

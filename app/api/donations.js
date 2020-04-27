@@ -6,21 +6,27 @@ const Candidate = require('../models/candidate');
 
 const Donations = {
   findAll: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const donations = await Donation.find();
       return donations;
     }
   },
   findByCandidate: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       const donations = await Donation.find({ candidate: request.params.id });
       return donations;
     }
   },
   makeDonation: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       let donation = new Donation(request.payload);
       const candidate = await Candidate.findOne({ _id: request.params.id });
@@ -33,7 +39,9 @@ const Donations = {
     }
   },
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: 'jwt',
+    },
     handler: async function(request, h) {
       await Donation.deleteMany({});
       return { success: true };
