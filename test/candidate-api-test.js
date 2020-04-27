@@ -9,8 +9,20 @@ suite('Candidate API tests', function () {
 
   let candidates = fixtures.candidates;
   let newCandidate = fixtures.newCandidate;
+  let newUser = fixtures.newUser;
 
   const donationService = new DonationService('http://localhost:3000');
+
+  suiteSetup(async function() {
+    await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
+  });
+
+  suiteTeardown(async function() {
+    await donationService.deleteAllUsers();
+    donationService.clearAuth();
+  });
 
   setup(async function () {
     await donationService.deleteAllCandidates();
