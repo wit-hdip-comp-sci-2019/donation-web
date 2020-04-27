@@ -2,6 +2,7 @@
 
 const Hapi = require('@hapi/hapi');
 const dotenv = require('dotenv');
+const utils = require('./app/api/utils.js');
 
 const result = dotenv.config();
 if (result.error) {
@@ -20,6 +21,7 @@ async function init() {
   await server.register(require('@hapi/inert'));
   await server.register(require('@hapi/vision'));
   await server.register(require('@hapi/cookie'));
+  await server.register(require('hapi-auth-jwt2'));
 
   server.validator(require('@hapi/joi'))
 
@@ -30,6 +32,12 @@ async function init() {
       isSecure: false
     },
     redirectTo: '/'
+  });
+
+  server.auth.strategy('jwt', 'jwt', {
+    key: 'secretpasswordnotrevealedtoanyone',
+    validate: utils.validate,
+    verifyOptions: { algorithms: ['HS256'] },
   });
 
   server.auth.default('session');
