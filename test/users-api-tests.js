@@ -11,12 +11,15 @@ suite('User API tests', function() {
 
   const donationService = new DonationService(fixtures.donationService);
 
-  setup(async function() {
+  suiteSetup(async function() {
     await donationService.deleteAllUsers();
+    const returnedUser = await donationService.createUser(newUser);
+    const response = await donationService.authenticate(newUser);
   });
 
-  teardown(async function() {
+  suiteTeardown(async function() {
     await donationService.deleteAllUsers();
+    donationService.clearAuth();
   });
 
   test('create a user', async function() {
@@ -47,19 +50,32 @@ suite('User API tests', function() {
   });
 
   test('get all users', async function() {
+    await donationService.deleteAllUsers();
+    await donationService.createUser(newUser);
+    await donationService.authenticate(newUser);
     for (let u of users) {
       await donationService.createUser(u);
     }
 
     const allUsers = await donationService.getUsers();
-    assert.equal(allUsers.length, users.length);
+    assert.equal(allUsers.length, users.length + 1);
   });
 
   test('get users detail', async function() {
+    await donationService.deleteAllUsers();
+    const user = await donationService.createUser(newUser);
+    await donationService.authenticate(newUser);
     for (let u of users) {
       await donationService.createUser(u);
     }
 
+    const testUser = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      password: user.password
+    };
+    users.unshift(testUser);
     const allUsers = await donationService.getUsers();
     for (var i = 0; i < users.length; i++) {
       assert(_.some([allUsers[i]], users[i]), 'returnedUser must be a superset of newUser');
@@ -67,7 +83,10 @@ suite('User API tests', function() {
   });
 
   test('get all users empty', async function() {
+    await donationService.deleteAllUsers();
+    const user = await donationService.createUser(newUser);
+    await donationService.authenticate(newUser);
     const allUsers = await donationService.getUsers();
-    assert.equal(allUsers.length, 0);
+    assert.equal(allUsers.length, 1);
   });
 });
