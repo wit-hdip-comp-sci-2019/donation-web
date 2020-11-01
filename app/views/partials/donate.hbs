@@ -1,4 +1,15 @@
-<section class="ui raised segment">
+<div class="uk-section uk-flex uk-flex-middle">
+  <div class="uk-grid uk-grid-stack">
+    <div class="uk-width-1-2@m">
+      <div class="uk-alert-primary" uk-alert></div>
+    </div>
+    <div class="uk-width-1-2@m">
+      <div class="uk-alert-primary" uk-alert>
+      </div>
+    </div>
+  </div>
+
+  {{!-- <section class="ui raised segment">
   <div class="ui grid ">
     <div class="ui form six wide column">
       <div class="ui stacked segment">
@@ -26,12 +37,12 @@
           <div class="grouped inline fields">
             <h3> Select Candidate </h3>
             {{#each candidates }}
-              <div class="field">
-                <div class="ui radio checkbox">
-                  <input type="radio" name="candidate" value="{{lastName}},{{firstName}}">
-                  <label>{{lastName}}, {{firstName}}</label>
-                </div>
+            <div class="field">
+              <div class="ui radio checkbox">
+                <input type="radio" name="candidate" value="{{lastName}},{{firstName}}">
+                <label>{{lastName}}, {{firstName}}</label>
               </div>
+            </div>
             {{/each}}
           </div>
           <button class="ui blue submit button">Donate</button>
@@ -43,4 +54,4 @@
       <img src="images/homer4.jpeg" class="ui medium image">
     </aside>
   </div>
-</section>
+</section> --}}

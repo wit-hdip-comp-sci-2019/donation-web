@@ -11,7 +11,7 @@ if (result.error) {
 
 const server = Hapi.server({
   port: process.env.PORT || 3000,
-  routes: { cors: true }
+  routes: { cors: true },
 });
 
 require('./app/models/db');
@@ -21,29 +21,29 @@ async function init() {
   await server.register(require('@hapi/vision'));
   await server.register(require('@hapi/cookie'));
 
-  server.validator(require('@hapi/joi'))
+  server.validator(require('@hapi/joi'));
 
   server.auth.strategy('session', 'cookie', {
     cookie: {
       name: process.env.cookie_name,
       password: process.env.cookie_password,
-      isSecure: false
+      isSecure: false,
     },
-    redirectTo: '/'
+    redirectTo: '/',
   });
 
   server.auth.default('session');
 
   server.views({
     engines: {
-      hbs: require('handlebars')
+      hbs: require('handlebars'),
     },
     relativeTo: __dirname,
     path: './app/views',
     layoutPath: './app/views/layouts',
     partialsPath: './app/views/partials',
     layout: true,
-    isCached: false
+    isCached: false,
   });
 
   server.route(require('./routes'));
@@ -52,7 +52,7 @@ async function init() {
   console.log(`Server running at: ${server.info.uri}`);
 }
 
-process.on('unhandledRejection', err => {
+process.on('unhandledRejection', (err) => {
   console.log(err);
   process.exit(1);
 });

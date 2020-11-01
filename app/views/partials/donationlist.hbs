@@ -1,25 +1,44 @@
 <section class="ui raised segment">
   <div class="ui grid">
     <aside class="six wide column">
-      <img src="images/homer5.jpg" class="ui medium image">
+      <img src="images/homer5.jpg" class="ui medium image" />
     </aside>
     <article class="eight wide column">
       <table class="ui celled table segment">
         <thead>
           <tr>
-            <th>Amount</th>
-            <th>Method donated</th>
-            <th>Donor</th>
-            <th>Candidate</th>
+            <th>
+              Amount
+            </th>
+            <th>
+              Method donated
+            </th>
+            <th>
+              Donor
+            </th>
+            <th>
+              Candidate
+            </th>
           </tr>
         </thead>
         <tbody>
           {{#each donations}}
             <tr>
-              <td> {{amount}} </td>
-              <td> {{method}} </td>
-              <td> {{donor.firstName}} {{donor.lastName}} </td>
-              <td> {{candidate.lastName}}, {{candidate.firstName}} </td>
+              <td>
+                {{amount}}
+              </td>
+              <td>
+                {{method}}
+              </td>
+              <td>
+                {{donor.firstName}}
+                {{donor.lastName}}
+              </td>
+              <td>
+                {{candidate.lastName}}
+                ,
+                {{candidate.firstName}}
+              </td>
             </tr>
           {{/each}}
         </tbody>
@@ -27,13 +46,17 @@
       <table class="ui celled table segment">
         <thead>
           <tr>
-            <th>Total so Far</th>
+            <th>
+              Total so Far
+            </th>
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <td> {{total}} </td>
-            </tr>
+          <tr>
+            <td>
+              {{total}}
+            </td>
+          </tr>
         </tbody>
       </table>
     </article>

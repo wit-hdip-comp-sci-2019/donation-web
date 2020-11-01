@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.js"></script>
-  </head>
-  <body>
-    <section class="ui container">
-      {{{content}}}
-    </section>
-    <script>
-      $(document).ready(function () {
-        $('.ui.dropdown').dropdown({ on: 'hover' });
-      });
-      $('.message .close').on('click', function () {
-        $(this).closest('.message').transition('fade');
-      });
-    </script>
-  </body>
+
+<head>
+  <title>{{title}}</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/css/uikit.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.9/dist/js/uikit-icons.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+  <link rel='stylesheet' href='global.css'>
+</head>
+
+<body>
+  {{!-- <section class="uk-container"> --}}
+  {{{content}}}
+  {{!-- </section> --}}
+</body>
+
 </html>

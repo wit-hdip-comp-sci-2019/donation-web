@@ -1,0 +1,9 @@
+body {
+  font-family: 'Open Sans', 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 34px;
+  color: #333333;
+}
