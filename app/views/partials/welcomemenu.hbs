@@ -1,15 +1,16 @@
-<nav class="ui inverted menu">
-  <header class="header item">
-    <a href="/">
-      Donation
-    </a>
-  </header>
-  <div class="right menu">
-    <a class="item" href="/signup">
-      Signup
-    </a>
-    <a class="item" href="/login">
-      Login
-    </a>
+<div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-grid-small" uk-grid>
+
+  {{> title }}
+
+  <div>
+    <div class="uk-card uk-card-default uk-padding-small">
+      <ul class="uk-iconnav">
+        <a href="/signup">
+          <i class="fas fa-user-cog fa-3x" style="color:rgb(63, 160, 155)" title="Sign up" pos="bottom" uk-tooltip></i>
+        </a>
+        <a href="/login">
+          <i class="fas fa-user-edit fa-3x" style="color:green" title="Log in" pos="bottom" uk-tooltip></i>
+        </a>
+      </ul>
+    </div>
   </div>
-</nav>

@@ -1,26 +1,21 @@
-<nav class="ui inverted menu">
-  <header class="header item">
-    <a href="/">
-      Donation
-    </a>
-  </header>
-  <div class="right menu">
-    <a id="home" class="item" href="/home">
-      Donate
-    </a>
-    <a id="report" class="item" href="/report">
-      Report
-    </a>
-    <a id="settings" class="item" href="/settings">
-      Settings
-    </a>
-    <a id="logout" class="item" href="/logout">
-      Logout
-    </a>
+<div class="uk-flex uk-flex-center uk-flex-middle uk-text-center uk-grid-small" uk-grid>
+
+  {{> title }}
+
+  <div>
+    <div class="uk-card uk-card-default uk-padding-small">
+      <ul class="uk-iconnav">
+        <a href="/home">
+          <i class="fas fa-hand-holding-usd fa-3x" style="color:rgb(63, 160, 155)" title="Donate" pos="bottom"
+            uk-tooltip></i>
+        </a>
+        <a href="/report">
+          <i class="fas fa-th-list fa-3x" style="color:green" title="Report" pos="bottom" uk-tooltip></i>
+        </a>
+        <a href="/logout">
+          <i class="fas fa-sign-out-alt fa-3x" style="color:rgb(168, 158, 14)" title="Sign out" pos="bottom"
+            uk-tooltip></i>
+        </a>
+      </ul>
+    </div>
   </div>
-</nav>
-<script>
-  $("#
-  {{_id}}
-  ").addClass("active item");
-</script>

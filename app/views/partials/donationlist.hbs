@@ -1,64 +1,40 @@
-<section class="ui raised segment">
-  <div class="ui grid">
-    <aside class="six wide column">
-      <img src="images/homer5.jpg" class="ui medium image" />
-    </aside>
-    <article class="eight wide column">
-      <table class="ui celled table segment">
-        <thead>
-          <tr>
-            <th>
-              Amount
-            </th>
-            <th>
-              Method donated
-            </th>
-            <th>
-              Donor
-            </th>
-            <th>
-              Candidate
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each donations}}
-            <tr>
-              <td>
-                {{amount}}
-              </td>
-              <td>
-                {{method}}
-              </td>
-              <td>
-                {{donor.firstName}}
-                {{donor.lastName}}
-              </td>
-              <td>
-                {{candidate.lastName}}
-                ,
-                {{candidate.firstName}}
-              </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
-      <table class="ui celled table segment">
-        <thead>
-          <tr>
-            <th>
-              Total so Far
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              {{total}}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
-  </div>
-</section>
+<div class="uk-margin uk-width-2xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+  <table class="uk-table">
+    <caption>Donations to Date </caption>
+    <thead>
+      <th>
+        Amount
+      </th>
+      <th>
+        Method donated
+      </th>
+      <th>
+        Donor
+      </th>
+      <th>
+        Candidate
+      </th>
+    </thead>
+    <tbody class="uk-text-left">
+      {{#each donations}}
+      <tr>
+        <td>
+          {{amount}}
+        </td>
+        <td>
+          {{method}}
+        </td>
+        <td>
+          {{donor.firstName}}
+          {{donor.lastName}}
+        </td>
+        <td>
+          {{candidate.lastName}}
+          ,
+          {{candidate.firstName}}
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
