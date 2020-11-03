@@ -1,45 +1,14 @@
 {{> welcomemenu title="Donation Services Inc." subTitle="Please Sign up"}}
 
-<div class="uk-section">
-  <div class="uk-grid uk-grid-stack uk-flex uk-flex-center uk-flex-middle">
-    <div class="uk-width-1-3@m uk-flex uk-flex-center uk-flex-middle">
-      <img width="300" src="images/homer3.png">
+<div class="uk-container uk-margin">
+  <div class="uk-child-width-expand uk-flex-center uk-flex-middle uk-text-center" uk-grid>
+    <div>
+      <img width="300" src="images/homer2.png">
     </div>
-    <div class="uk-width-2-3@m">
-      <div class="uk-margin uk-width-xlarge uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-        <h3 class="uk-card-title uk-text-center">Sign up today - its free!</h3>
-        <form action="/signup" method="POST">
-          <div class="uk-margin">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon" uk-icon="icon: user"></span>
-              <input class="uk-input uk-form-large" type="text" name="firstName">
-            </div>
-          </div>
-          <div class="uk-margin">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon" uk-icon="icon: user"></span>
-              <input class="uk-input uk-form-large" type="text" name="lastName">
-            </div>
-          </div>
-          <div class="uk-margin">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon" uk-icon="icon: mail"></span>
-              <input class="uk-input uk-form-large" type="text" name="email">
-            </div>
-          </div>
-          <div class="uk-margin">
-            <div class="uk-inline uk-width-1-1">
-              <span class="uk-form-icon" uk-icon="icon: lock"></span>
-              <input class="uk-input uk-form-large" type="password" name="password">
-            </div>
-          </div>
-          <div class="uk-margin">
-            <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Sign up</button>
-          </div>
-        </form>
-        <div class="uk-text-left uk-text-small">
-          {{> error }}
-        </div>
+    <div>
+      <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large">
+        <h3 class="uk-card-title uk-text-center">Welcome back!</h3>
+        {{>signup-form}}
       </div>
     </div>
   </div>
