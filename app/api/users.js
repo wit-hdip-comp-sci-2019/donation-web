@@ -39,6 +39,23 @@ const Users = {
     },
   },
 
+  update: {
+    auth: false,
+    handler: async function (request, h) {
+      const userEdit = request.payload;
+      const user = await User.findOne({ _id: request.params.id });
+      user.firstName = userEdit.firstName;
+      user.lastName = userEdit.lastName;
+      user.email = userEdit.email;
+      user.password = userEdit.password;
+      await user.save();
+      if (user) {
+        return h.response(user).code(201);
+      }
+      return Boom.badImplementation('error creating user');
+    },
+  },
+
   deleteAll: {
     auth: false,
     handler: async function (request, h) {

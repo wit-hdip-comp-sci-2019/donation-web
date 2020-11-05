@@ -14,6 +14,7 @@ module.exports = [
   { method: 'POST', path: '/api/users', config: Users.create },
   { method: 'DELETE', path: '/api/users/{id}', config: Users.deleteOne },
   { method: 'DELETE', path: '/api/users', config: Users.deleteAll },
+  { method: 'PUT', path: '/api/users/{id}', config: Users.update },
 
   { method: 'GET', path: '/api/donations', config: Donations.findAll },
   { method: 'GET', path: '/api/candidates/{id}/donations', config: Donations.findByCandidate },
