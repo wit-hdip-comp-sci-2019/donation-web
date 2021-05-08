@@ -17,7 +17,7 @@
     "@hapi/joi": "^17.1.1",
     "@hapi/vision": "^6.0.0",
     "dotenv": "^8.2.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "hapi-auth-jwt2": "^10.1.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.15",
